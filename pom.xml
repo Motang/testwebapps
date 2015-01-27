@@ -428,7 +428,7 @@
 					<version>${maven_checkstyle_plugin_version}</version>
 					<configuration>
 						<linkXRef>true</linkXRef>
-						<configLocation>sf-checkstyle.xml</configLocation>
+						<configLocation>checkstyle-checker.xml</configLocation>
 					</configuration>
 				</plugin>
 				<!-- FindBugs -->
