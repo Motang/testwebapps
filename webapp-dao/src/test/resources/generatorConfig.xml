@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+      PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+      "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+	    <!-- 抑制警告 -->
+        <property name="suppressTypeWarnings" value="true" />
+        
+        <!-- generate entity时，生成hashcode和equals方法 -->
+        <!-- <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" /> -->
+        <!-- generate entity时，生成serialVersionUID -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <!-- 这个插件只会增加字符串字段映射到一个JDBC字符的方法 -->
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <!-- genenat entity时,生成toString -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+         
+		<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+        
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://10.118.46.12:3306/hkss_product"
+            userId="root" password="sf123456">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- generate Model -->
+        <javaModelGenerator targetPackage="com.sf.hkmall.domain"
+            targetProject="MAVEN">
+            <!-- targetProject="${project.build.directory}/../../hkdss-product-client/src/main/java"> -->
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+            <property name="isMergeable" value="false"/>
+        </javaModelGenerator>
+
+        <!-- generate xml -->
+        <sqlMapGenerator targetPackage="sqlmap.db"
+            targetProject="MAVEN">
+            <!-- targetProject="${project.build.directory}/../src/main/resources"> -->
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- generate Mapper -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.sf.hkmall.mapper"
+            targetProject="MAVEN">
+            <!-- targetProject="${project.build.directory}/../src/main/java"> -->
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!-- 
+		  catalog CDATA #IMPLIED
+		  schema CDATA #IMPLIED
+		  tableName CDATA #REQUIRED
+		  alias CDATA #IMPLIED
+		  domainObjectName CDATA #IMPLIED
+		  enableInsert CDATA #IMPLIED
+		  enableSelectByPrimaryKey CDATA #IMPLIED
+		  enableUpdateByPrimaryKey CDATA #IMPLIED
+		  enableDeleteByPrimaryKey CDATA #IMPLIED
+		  enableCountByExample CDATA #IMPLIED
+		  enableUpdateByExample CDATA #IMPLIED
+		  enableDeleteByExample CDATA #IMPLIED
+		  enableSelectByExample CDATA #IMPLIED
+		  selectByExampleQueryId CDATA #IMPLIED
+		  selectByPrimaryKeyQueryId CDATA #IMPLIED
+		  modelType CDATA #IMPLIED
+		  escapeWildcards CDATA #IMPLIED
+		  delimitIdentifiers CDATA #IMPLIED
+		  delimitAllColumns CDATA #IMPLIED
+         -->
+        <table schema="" tableName="AreaSaleTemplate" domainObjectName="AreaSaleTemplate" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false" />
+        <table schema="" tableName="Attribute" domainObjectName="Attribute" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false" />
+        <table schema="" tableName="AttributeGroup" domainObjectName="AttributeGroup" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false" >
+            <columnOverride column="type" javaType="java.lang.Integer" />
+            <columnOverride column="defShow" javaType="java.lang.Integer" />
+            <columnOverride column="YN" javaType="java.lang.Integer" />
+        </table>
+        <table schema="" tableName="AttributeValue" domainObjectName="AttributeValue" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false">
+            <columnOverride column="YN" javaType="java.lang.Integer" />
+        </table>
+        <table schema="" tableName="Brand" domainObjectName="Brand" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false">
+            <columnOverride column="STATUS" javaType="java.lang.Integer" />
+            <columnOverride column="YN" javaType="java.lang.Integer" />
+        </table>
+        <table schema="" tableName="BrandRelation" domainObjectName="CategoryBrandRel" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false">
+            <columnOverride column="YN" javaType="java.lang.Integer" />
+        </table>
+        <table schema="" tableName="Category" domainObjectName="Category" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false">
+            <columnOverride column="LEVEL" javaType="java.lang.Integer" />
+            <columnOverride column="TYPE" javaType="java.lang.Integer" />
+            <columnOverride column="STATUS" javaType="java.lang.Integer" />
+            <columnOverride column="OPENSUB" javaType="java.lang.Integer" />
+            <columnOverride column="SHOW_STATUS" javaType="java.lang.Integer" />
+            <columnOverride column="YN" javaType="java.lang.Integer" />
+        </table>
+        <table schema="" tableName="Product" domainObjectName="Product" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false"/>
+        <table schema="" tableName="ProductAudit" domainObjectName="ProductAudit" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false"/>
+        <table schema="" tableName="ProductDescribe" domainObjectName="ProductDescribe" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false"/>
+        <table schema="" tableName="SaleProperty" domainObjectName="SaleProperty" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false"/>
+        <table schema="" tableName="Sku" domainObjectName="Sku" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false"/>
+        <table schema="" tableName="SkuExtPrice" domainObjectName="SkuExtPrice" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false"/>
+        <table schema="" tableName="SkuImage" domainObjectName="SkuImage" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false"/>
+        <table schema="" tableName="SkuPrice" domainObjectName="SkuPrice" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false"/>
+        <table schema="" tableName="SpecAttribute" domainObjectName="SpecAttribute" modelType="flat"
+            enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" 
+            selectByExampleQueryId="false"/>
+
+    </context>
+</generatorConfiguration> 

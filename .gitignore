@@ -13,8 +13,25 @@
 hs_err_pid*
 
 target/
+logs/
 .settings/
 bin/
 cache/
 /.classpath
 /.project
+
+/**/target/
+/**/logs/
+/**/.settings/
+/**/.classpath
+/**/.project
+/**/cache/
+/**/bin/
+
+/*/*/target/
+/*/*/logs/
+/*/*/.settings/
+/*/*/.classpath
+/*/*/.project
+
+
