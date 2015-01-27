@@ -10,13 +10,13 @@
 	<name>The parent project of testwebapps Maven Webapp</name>
 	
 	<modules>
-		<module>webapp-common</module>
-		<module>webapp-domain</module>
-		<module>webapp-dao</module>
-		<module>webapp-manager</module>
-		<module>webapp-service</module>
-		<module>webapp-controller</module>
-		<module>webapp-web/testweb</module>
+		<module>common</module>
+		<module>domain/webapp-domain</module>
+		<module>dao/webapp-dao</module>
+		<module>manager/webapp-manager</module>
+		<module>service/webapp-service</module>
+		<module>controller/webapp-controller</module>
+		<module>web/webapp-web</module>
 	</modules>
 
 	<properties>
