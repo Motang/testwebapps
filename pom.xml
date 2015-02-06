@@ -35,7 +35,7 @@
 
 		<!-- dependency libs version -->
 		<!-- spring版本号 -->
-		<spring.bom.version>3.2.8.RELEASE</spring.bom.version>
+		<spring.bom.version>4.0.9.RELEASE</spring.bom.version>
 		<!-- dubbo版本号 -->
 		<dubbo.version>2.5.3</dubbo.version>
 		<zookeeper.version>3.4.6</zookeeper.version>
@@ -134,11 +134,17 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!-- dubbo-sf -->
+			<!-- dubbo -->
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>dubbo</artifactId>
 				<version>${dubbo.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>spring</artifactId>
+						<groupId>org.springframework</groupId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.zookeeper</groupId>
