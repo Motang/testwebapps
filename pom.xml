@@ -36,8 +36,8 @@
 		<!-- dependency libs version -->
 		<!-- spring版本号 -->
 		<spring.bom.version>3.2.8.RELEASE</spring.bom.version>
-		<!-- dubbo-sf版本号 -->
-		<dubbo-sf.version>sf.1.0.0</dubbo-sf.version>
+		<!-- dubbo版本号 -->
+		<dubbo.version>2.5.3</dubbo.version>
 		<zookeeper.version>3.4.6</zookeeper.version>
 		<zkclient.version>0.4</zkclient.version>
 		<!-- others -->
@@ -138,7 +138,7 @@
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>dubbo</artifactId>
-				<version>${dubbo-sf.version}</version>
+				<version>${dubbo.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.zookeeper</groupId>
@@ -253,40 +253,26 @@
 	</dependencyManagement>
 
 	<distributionManagement>
-		<!-- 顺丰maven仓库发布路径 -->
+		<!-- maven私人仓库发布路径 -->
 		<repository>
-			<id>sf-nexus-releases</id>
+			<id>nexus-releases</id>
 			<name>Nexus Release Repository</name>
-			<url>http://10.118.46.12:8081/nexus/content/repositories/releases/</url>
+			<url>http://localhost:8081/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
-			<id>sf-nexus-snapshots</id>
+			<id>nexus-snapshots</id>
 			<name>Nexus Snapshot Repository</name>
-			<url>http://10.118.46.12:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 		<!-- hkapi javadoc site -->
 		<site>
-			<id>sf-javadoc-site</id>
-			<!-- <url>file:E:\\javadoc\hkss</url> -->
+			<id>javadoc-site</id>
+			<!-- <url>file:E:\\javadoc\webapps</url> -->
 			<url>file:/usr/local/apache-tomcat-7.0.54/webapps/site/hkmall</url>
 		</site>
 		<!-- mvn site:deploy 部署的位置 -->
 	</distributionManagement>
 
-	<repositories>
-		<repository>
-			<id>sf-private-reponsitory</id>
-			<name>SF private repository</name>
-			<url>http://10.118.46.12:8081/nexus/content/groups/public/</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>sf-private-reponsitory</id>
-			<name>SF private repository</name>
-			<url>http://10.118.46.12:8081/nexus/content/groups/public/</url>
-		</pluginRepository>
-	</pluginRepositories>
 
 	<build>
 		<plugins>
