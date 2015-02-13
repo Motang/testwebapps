@@ -49,6 +49,7 @@
 		<hibernate-validator.version>4.3.2.Final</hibernate-validator.version>
 		<shiro-spring.version>1.2.3</shiro-spring.version>
 		<httpclient.version>4.3</httpclient.version>
+		<fastjson.version>1.2.4</fastjson.version>
 		<!-- mybatis版本号 -->
 		<mybatis.version>3.2.7</mybatis.version>
 		<mybatis-spring.version>1.2.2</mybatis-spring.version>
@@ -196,6 +197,11 @@
 				<artifactId>httpclient</artifactId>
 				<version>${httpclient.version}</version>
 			</dependency>
+			<dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
 			<!-- mybatis核心包 -->
 			<dependency>
 				<groupId>org.mybatis</groupId>

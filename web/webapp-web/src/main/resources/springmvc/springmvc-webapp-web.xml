@@ -30,7 +30,7 @@
         <property name="defaultViews">
             <list>
                 <!--<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>-->
-                <bean class="com.alibaba.fastjson.support.spring.FastJsonJsonView">
+                <bean class="com.motang.webapp.web.plugin.view.CustomizeFastJsonJsonView">
                     <!--这个地方加上这个功能吧，能自己配置一些东西，比如时间的格式化，null输出""等等-->
                     <property name="features">
                         <array>
