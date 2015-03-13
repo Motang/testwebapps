@@ -52,7 +52,7 @@
         <!-- 自定义returnValue解析器 -->
         <!-- <mvc:return-value-handlers> -->
             <!-- 对声明@ResponseJsonBody -->
-            <!-- <bean id="reponseJsonBodyReturnValueHandler" class="com.sf.hkmall.web.plugin.handler.ReponseJsonBodyMethodReturnValueHandler"> -->
+            <!-- <bean id="reponseJsonBodyReturnValueHandler" class="com.sf.hkmall.web.plugin.annotation.handler.ReponseJsonBodyMethodReturnValueHandler"> -->
             <!--    <property name="messageConverters"> -->
             <!--        <list> -->
             <!--            <ref bean="fastJsonHttpMessageConverter" /> -->
