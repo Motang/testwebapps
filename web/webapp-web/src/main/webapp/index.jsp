@@ -10,6 +10,6 @@
 </head>
 
 <body scroll="no">
-	<H1>Welcome to webapp-test</H1>
+	<H1>Welcome to the webapp project</H1>
 </body>
 </html>
