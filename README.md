@@ -3,6 +3,7 @@ webapp
 
 A J2EE project with Maven build, that contains seven sub-maven module:
 
+```
 -- common (a base classes set helps other module)
 --domain (model for DAO or web layer)
   -- webapp-domain
@@ -16,4 +17,4 @@ A J2EE project with Maven build, that contains seven sub-maven module:
   -- webapp-controller
 --web (view layer)
   -- webapp-web
-
+```
