@@ -13,9 +13,9 @@
 		</filter> -->
 	</appender>
 
-	<appender name="hkmall-ipad" class="org.apache.log4j.FileAppender">
+	<appender name="webapp" class="org.apache.log4j.FileAppender">
 		<param name="Append" value="false" />
-		<param name="file" value="../logs/hkmall-ipad-web.log" />
+		<param name="file" value="../logs/webapp.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n" />
 		</layout>
@@ -24,7 +24,7 @@
 	<root>
 		<priority value="info" />
 		<appender-ref ref="CONSOLE" />
-		<appender-ref ref="hkmall-ipad" />
+		<appender-ref ref="webapp" />
 	</root>
 
 	
