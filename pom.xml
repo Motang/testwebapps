@@ -280,7 +280,7 @@
 		<site>
 			<id>javadoc-site</id>
 			<!-- <url>file:E:\\javadoc\webapps</url> -->
-			<url>file:/usr/local/apache-tomcat-7.0.54/webapps/site/hkmall</url>
+			<url>file:/usr/local/apache-tomcat-7.0.54/webapps/site/webapp</url>
 		</site>
 		<!-- mvn site:deploy 部署的位置 -->
 	</distributionManagement>
