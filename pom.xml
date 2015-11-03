@@ -3,24 +3,24 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>com.sf.framework</groupId>
 	<artifactId>sf-framework-common</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
-	
+
 	<name>sf-framework-common</name>
-	
+
 	<properties>
 		<project.build.sourceEncoding>${file_encoding}</project.build.sourceEncoding>
 
 		<java_source_version>1.5</java_source_version>
 		<java_target_version>1.5</java_target_version>
 		<file_encoding>UTF-8</file_encoding>
-		
+
 		<!-- Maven plugins -->
 		<maven_compiler_plugin_version>2.5</maven_compiler_plugin_version>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -37,8 +37,13 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.3.2</version>
 		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -56,7 +61,7 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	
+
 	<distributionManagement>
 		<!-- 顺丰maven仓库发布路径 -->
 		<repository>

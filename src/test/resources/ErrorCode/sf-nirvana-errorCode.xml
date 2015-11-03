@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sf-nirvana>
+    <common-service code="01">
+        <message-notifications code="00">
+            <interface1 code="00">
+                <error1 code="00" />
+                <error2 code="01" />
+                <error3 code="02" />
+            </interface1>
+
+            <interface2 code="01">
+                <error1 code="00" />
+                <error2 code="01" />
+                <error3 code="02" />
+            </interface2>
+
+            <interface3 code="02">
+                <error1 code="00" />
+                <error2 code="01" />
+                <error3 code="02" />
+            </interface3>
+        </message-notifications>
+
+        <users code="01">
+            <interface1 code="00">
+                <error1 code="00" />
+                <error2 code="01" />
+                <error3 code="02" />
+            </interface1>
+
+            <interface2 code="01">
+                <error1 code="00" />
+                <error2 code="01" />
+                <error3 code="02" />
+            </interface2>
+
+            <interface3 code="02">
+                <error1 code="00" />
+                <error2 code="01" />
+                <error3 code="02" />
+            </interface3>
+        </users>
+    </common-service>	
+</sf-nirvana>
