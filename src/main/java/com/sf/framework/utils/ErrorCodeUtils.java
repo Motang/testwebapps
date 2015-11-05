@@ -24,10 +24,23 @@ import org.dom4j.io.XMLWriter;
  * @version version1.0 2015年11月3日
  */
 public class ErrorCodeUtils {
+	public static final long getSystem=4278190080L;
+	public static final long getService=267386880L;
+	public static final long getInterface=65280L;
+	public static final long getError=255L;
 	
-	private String errCode="";
+	public static String HextoString(long input)
+	{
+		return String.format("%08X", input);
+	}
+	
+	public static long StringtoHex(String input)
+	{
+		return Long.parseLong(input,16);
+	}
+	/*private String errCode="";
 	private String parameter[]=new String [4];
-	/**
+	*//**
 	 * 在xml文件中，错误码格式如
 	 * <system code="00">
 	 * 	<Service code="11">
@@ -44,9 +57,7 @@ public class ErrorCodeUtils {
 	 * @param Error 表示具体错误
 	 * @return 错误码
 	 * @throws DocumentException
-	 */
-	public ErrorCodeUtils()
-	{}
+	 *//*
 	public ErrorCodeUtils(String system,String Service,String Interface,String Error)
 	{
 		parameter[0]=system;
@@ -68,7 +79,7 @@ public class ErrorCodeUtils {
 		return false;
 	}
 	
-	public void writer(Document document) throws Exception {  
+	public static void writer(Document document) throws Exception {  
 	        // 紧凑的格式  
 	        // OutputFormat format = OutputFormat.createCompactFormat();  
 	        // 排版缩进的格式  
@@ -122,7 +133,8 @@ public class ErrorCodeUtils {
 	    root.addElement(system);
 	    root.element(system).addAttribute("code", String.format("%02X",newCode));
 	    // 写入到一个新的文件中  
-        new ErrorCodeUtils().writer(document);
+        ErrorCodeUtils.writer(document);
 	    return true;
-	}
+	}*/
+	
 }
