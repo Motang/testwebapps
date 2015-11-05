@@ -68,18 +68,25 @@
         <property name="defaultEncoding" value="UTF-8"/>  
         <property name="cacheSeconds" value="60"/>  
     </bean>
-    
+    <!-- 
     <mvc:interceptors>
        <mvc:interceptor>
            <mvc:mapping path="/**"/>
            <bean class="com.sf.nirvana.os.web.interceptor.BasicHttpAuthInterceptor"/>
        </mvc:interceptor>
-    </mvc:interceptors>
+    </mvc:interceptors> -->
     
     <mvc:view-controller path="/" view-name="redirect:/index.html" />
 	<!-- 当在web.xml 中 DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
 	<mvc:default-servlet-handler />
-	
+	<!-- 设置视图解析器 -->
+    <!-- 默认的解析器 ， 配置支持JSP视图解析器-->
+    <bean id="defaultJspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="prefix" value="/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 	<!-- 文件上传相关 解析器 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!--one of the properties available;the maximum upload size in bytes 10M -->

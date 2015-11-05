@@ -36,7 +36,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>springMVC</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
+		<url-pattern>/index/*</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 系统强制启动UTF-8编码 -->
