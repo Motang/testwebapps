@@ -1,140 +1,52 @@
 package com.sf.framework.utils;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.util.Formatter;
-import java.util.Iterator;
-import java.util.List;
-
-import org.apache.commons.logging.LogSource;
-import org.apache.commons.logging.impl.Log4JLogger;
-import org.dom4j.*;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
 
 /**
- * 错误码读取，错误码以xml文件的形式存储在src/main/resources/ErrorCode目录下
+ * 错误码帮助类
  * 
  * @author 862911
- * @version version1.0 2015年11月3日
+ * @version version2.0 2015年11月6日
+ * 
  */
-public class ErrorCodeUtils {
-	public static final long getSystem=4278190080L;
-	public static final long getService=267386880L;
-	public static final long getInterface=65280L;
-	public static final long getError=255L;
-	
-	public static String HextoString(long input)
-	{
+public final class ErrorCodeUtils {
+	public static final long ERR_CODE_SYSTEM = 0xFF000000;
+	public static final long ERR_CODE_SERVICE = 0xFF0000;
+	public static final long ERR_CODE_INTERFACE_ = 0xFF00;
+	public static final long ERR_CODE_ERROR = 0xFF;
+	/**
+	 * @param long input
+	 * the error code in Hex of type long,for example: 0x000000FF or 255L
+	 * @return String
+	 * the errocode in String, for example: 0x000000FF or 255L -> "000000FF"
+	 */
+	public static String HextoString(long input) {
 		return String.format("%08X", input);
 	}
-	
-	public static long StringtoHex(String input)
-	{
-		return Long.parseLong(input,16);
+	/**
+	 * @param String input
+	 * the errocode in String, for example: "000000FF"
+	 * @return long
+	 * the error code in Hex long of type long, for example: "000000FF" -> 255L
+	 */
+	public static long StringtoHex(String input) {
+		return Long.parseLong(input, 16);
 	}
-	/*private String errCode="";
-	private String parameter[]=new String [4];
-	*//**
-	 * 在xml文件中，错误码格式如
-	 * <system code="00">
-	 * 	<Service code="11">
-	 * 		<Interface code="22">
-	 * 			<Error code="33"/>
-	 * 		</Interface>
-	 * 	</Service>
-	 * </system>
-	 * 所以错误码为00112233
-	 * 
-	 * @param system 表示系统
-	 * @param Service 表示模块
-	 * @param Interface 表示接口
-	 * @param Error 表示具体错误
-	 * @return 错误码
-	 * @throws DocumentException
-	 *//*
-	public ErrorCodeUtils(String system,String Service,String Interface,String Error)
-	{
-		parameter[0]=system;
-		parameter[1]=Service;
-		parameter[2]=Interface;
-		parameter[3]=Error;
+	/**
+	 * @param long system, long service, long interfaces, long error
+	 * the corresponding error code of each part in Hex of type long, for example: system:0x02,service:0x04,interfaces:0x0a,error:0x05
+	 * @return long
+	 * the comprehensive error code with each part, for example: 0x02040a05
+	 */
+	public static long gen(long system, long service, long interfaces, long error) {
+		return (system<<24) + (service<<16) + (interfaces<<8) + error;
 	}
-	
-	public boolean getErrorCode(int para,Element node)
-	{
-		if(para==4)
-			return true;
-		node=node.element(parameter[para]);
-		if(node!=null)
-		{
-			errCode+=node.attributeValue("code");
-			return getErrorCode(para+1,node);
-		}
-		return false;
+	/**
+	 * @param long system, long service, long interfaces, long error
+	 * the corresponding error code of each part in String, for example: system:"02",service:"04",interfaces:"0a",error:"05"
+	 * @return long
+	 * the comprehensive error code with each part, for example: 0x02040a05
+	 */
+	public static long gen(String system, String service, String interfaces, String error) {
+		return gen(StringtoHex(system), StringtoHex(service), StringtoHex(interfaces), StringtoHex(error));
 	}
-	
-	public static void writer(Document document) throws Exception {  
-	        // 紧凑的格式  
-	        // OutputFormat format = OutputFormat.createCompactFormat();  
-	        // 排版缩进的格式  
-	        OutputFormat format = OutputFormat.createPrettyPrint();  
-	        // 设置编码  
-	        format.setEncoding("UTF-8");  
-	        // 创建XMLWriter对象,指定了写出文件及编码格式  
-	        XMLWriter writer = new XMLWriter(new OutputStreamWriter(
-	        		//new FileOutputStream(new File("D:/a.xml")), "UTF-8"), format);
-	                new FileOutputStream(new File(ClassLoader.getSystemResource("").getPath()+"/ErrorCode/sf-nirvana-errorCode.xml")), "UTF-8"), format);  
-	        // 写入  
-	        writer.write(document);  
-	        // 立即写入  
-	        writer.flush();  
-	        // 关闭操作  
-	        writer.close();  
-	}
-	public static String getErrorCode(String system,String Service,String Interface,String Error) throws DocumentException
-	{
-		SAXReader reader = new SAXReader();                
-	    Document document = reader.read(new File(ClassLoader.getSystemResource("").getPath()+"/ErrorCode/sf-nirvana-errorCode.xml"));
-	    Element root = document.getRootElement();
-	    ErrorCodeUtils ecu=new ErrorCodeUtils(system,Service,Interface,Error);
-	    if(ecu.getErrorCode(0,root))
-	    {
-	    	System.out.println("Success");
-	    	return ecu.errCode;
-	    }
-	    else
-	    {
-	    	System.out.println("Error is not contained in the xml! Please Check and modify!");
-	    	return null;
-	    }
-	}
-	
-	public static boolean newSystem(String system) throws Exception
-	{
-		SAXReader reader = new SAXReader();                
-	    Document document = reader.read(new File(ClassLoader.getSystemResource("").getPath()+"/ErrorCode/sf-nirvana-errorCode.xml"));
-	    Element root = document.getRootElement(),node=null;
-	    node=root.element(system);
-	    if(node!=null)
-	    {
-	    	System.out.println("System exists!");
-	    	return false;
-	    }
-	    Iterator<Element> it = root.elementIterator();
-	    while (it.hasNext())
-            node = it.next();
-	    int newCode=Integer.parseInt(node.attributeValue("code"), 16)+1;
-	    root.addElement(system);
-	    root.element(system).addAttribute("code", String.format("%02X",newCode));
-	    // 写入到一个新的文件中  
-        ErrorCodeUtils.writer(document);
-	    return true;
-	}*/
-	
 }

@@ -29,5 +29,7 @@ public class TestErrorCodeUtils {
 		Assert.assertEquals(ErrorCodeUtils.StringtoHex("FFFF0000"),4294901760L);
 		Assert.assertEquals(ErrorCodeUtils.StringtoHex("000000FF"),255L);
 		Assert.assertEquals(ErrorCodeUtils.StringtoHex("000006C8"),1736L);
+		Assert.assertEquals(ErrorCodeUtils.gen(0x02, 0x04, 0x0a, 0x05),0x02040a05);
+		Assert.assertEquals(ErrorCodeUtils.gen("02", "04", "0a", "05"),0x02040a05);
 	}
 }
